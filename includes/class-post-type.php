@@ -48,6 +48,26 @@ class Post_Type {
 	}
 
 	public function register_taxonomies() {
-		register_taxonomy( LOOP_EVENTS_CPT_SLUG . '-tags', LOOP_EVENTS_CPT_SLUG, array() );
+
+		$labels = array(
+			'name'              => _x( 'Tags', 'taxonomy general name', 'loop-events' ),
+			'singular_name'     => _x( 'Tag', 'taxonomy singular name', 'loop-events' ),
+			'search_items'      => __( 'Search Tags', 'loop-events' ),
+			'all_items'         => __( 'All Tags', 'loop-events' ),
+			'edit_item'         => __( 'Edit Tag', 'loop-events' ),
+			'update_item'       => __( 'Update Tag', 'loop-events' ),
+			'add_new_item'      => __( 'Add New Tag', 'loop-events' ),
+			'new_item_name'     => __( 'New Tag Name', 'loop-events' ),
+			'menu_name'         => __( 'Tag', 'loop-events' ),
+		);
+
+		$args = array(
+			'hierarchical'      => false, // Tag.
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+		);
+		register_taxonomy( LOOP_EVENTS_CPT_SLUG . '-tags', LOOP_EVENTS_CPT_SLUG, $args );
 	}
 }
