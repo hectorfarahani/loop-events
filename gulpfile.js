@@ -93,10 +93,10 @@ gulp.task(
     )
       .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
       .pipe(save('before-dest'))
-      .pipe(rename({ basename: 'srea-admin', dirname: '' }))
+      .pipe(rename({ basename: 'loo-events-admin', dirname: '' }))
       .pipe(gulp.dest('admin/assets/dist/css'))
       .pipe(cleanCSS())
-      .pipe(rename({ basename: 'srea-admin', suffix: '.min', dirname: '' }))
+      .pipe(rename({ basename: 'loop-events-admin', suffix: '.min', dirname: '' }))
       .pipe(gulp.dest('admin/assets/dist/css'))
 
     gulp.src(
@@ -106,10 +106,10 @@ gulp.task(
     )
       .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
       .pipe(save('before-dest'))
-      .pipe(rename({ basename: 'srea-front', dirname: '' }))
+      .pipe(rename({ basename: 'loop-events-front', dirname: '' }))
       .pipe(gulp.dest('front/assets/dist/css'))
       .pipe(cleanCSS())
-      .pipe(rename({ basename: 'srea-front', suffix: '.min', dirname: '' }))
+      .pipe(rename({ basename: 'loop-events-front', suffix: '.min', dirname: '' }))
       .pipe(gulp.dest('front/assets/dist/css'))
     cb();
   }
@@ -127,10 +127,10 @@ gulp.task(
       .pipe(babel({
         presets: ['@babel/env']
       }))
-      .pipe(rename({ basename: 'srea-admin', dirname: '' }))
+      .pipe(rename({ basename: 'loop-events-admin', dirname: '' }))
       .pipe(gulp.dest('admin/assets/dist/js'))
       .pipe(uglify())
-      .pipe(rename({ basename: 'srea-admin', suffix: '.min', dirname: '' }))
+      .pipe(rename({ basename: 'loop-events-admin', suffix: '.min', dirname: '' }))
       .pipe(gulp.dest('admin/assets/dist/js'));
 
     gulp.src(
@@ -141,10 +141,10 @@ gulp.task(
       .pipe(babel({
         presets: ['@babel/env']
       }))
-      .pipe(rename({ basename: 'srea-front', dirname: '' }))
+      .pipe(rename({ basename: 'loop-events-front', dirname: '' }))
       .pipe(gulp.dest('front/assets/dist/js'))
       .pipe(uglify())
-      .pipe(rename({ basename: 'srea-front', suffix: '.min', dirname: '' }))
+      .pipe(rename({ basename: 'loop-events-front', suffix: '.min', dirname: '' }))
       .pipe(gulp.dest('front/assets/dist/js'));
 
     cb();
@@ -158,7 +158,7 @@ gulp.task(
     gulp.src(versioningFiles)
       .pipe(
         replace(
-          /(\* Version:.+\s|SREA_VERSION.*|Stable tag:.*\s)(\d+\.\d+\.\d+)/g,
+          /(\* Version:.+\s|LOOP_EVENTS_VERSION.*|Stable tag:.*\s)(\d+\.\d+\.\d+)/g,
           function (match, p1, p2) {
             if (p2 === version) {
               console.log('The current version is ' + version + '. No changes.')

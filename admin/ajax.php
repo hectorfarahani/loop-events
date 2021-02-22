@@ -6,8 +6,10 @@ function loop_events_settings() {
 
 	check_ajax_referer( 'loop_events_settings', 'nonce' );
 
-	$post_type = sanitize_text_field( $_POST['option'] );
-	$value     = sanitize_text_field( $_POST['value'] );
+	if ( ! isset( $_POST['events'] ) || empty( $_POST['events'] ) ) {
+		wp_send_json_error();
+	}
 
+	json_decode( $_POST['events'], true );
 
 }

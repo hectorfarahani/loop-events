@@ -26,7 +26,7 @@ class Init {
 	}
 
 	public function assets( $hook ) {
-		if ( 'toplevel_page_loop-events' === $hook ) {
+		if ( 'settings_page_loop-events-settings' === $hook ) {
 			wp_enqueue_style( 'loop-events-admin' );
 			wp_enqueue_script( 'loop-events-admin' );
 		}
