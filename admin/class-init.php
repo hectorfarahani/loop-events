@@ -57,7 +57,7 @@ class Init {
 					<label for="loop-events-json-import">
 						<?php esc_html_e( 'Select a json file to import events.', 'loop-events' ); ?>
 					</label>
-						<input type="file" name="loop-events-json" id="loop-events-json">
+						<input type="file" name="loop-events-json" id="loop-events-json" accept=".json">
 						<button type="button" id="loop-events-json-import" class="button button-primary"><?php esc_html_e( 'Import', 'loop-events' ); ?></button>
 				<?php wp_nonce_field( 'loop_events_settings' ); ?>
 				</section>
