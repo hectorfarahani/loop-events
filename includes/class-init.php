@@ -8,6 +8,7 @@ class Init {
 
 	private function __construct() {
 		new \Loop_Events\Post_Type();
+		new \Loop_Events\Fields();
 	}
 
 	public static function instance() {
