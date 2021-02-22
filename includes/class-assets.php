@@ -1,6 +1,6 @@
 <?php
 
-namespace SPSP\Includes;
+namespace Loop_Events\Includes;
 class Assets {
 
 	public static $instance = null;
@@ -38,11 +38,11 @@ class Assets {
 	}
 
 	public function register_front_scripts() {
-		wp_register_script( 'SPSP-front', SPSP_FRONT_ASSETS . 'js/SPSP-front' . $this->suffix . '.js', array( 'jquery' ), SPSP_VERSION, true );
+		wp_register_script( 'loop-events-front', LOOP_EVENTS_FRONT_ASSETS . 'js/loop-events-front' . $this->suffix . '.js', array( 'jquery' ), LOOP_EVENTS_VERSION, true );
 	}
 
 	public function register_front_styles() {
-		wp_register_style( 'SPSP-front', SPSP_FRONT_ASSETS . 'css/SPSP-front' . $this->suffix . '.css', array(), SPSP_VERSION, 'all' );
+		wp_register_style( 'loop-events-front', LOOP_EVENTS_FRONT_ASSETS . 'css/loop-events-front' . $this->suffix . '.css', array(), LOOP_EVENTS_VERSION, 'all' );
 	}
 
 	public function register_admin_assets() {
@@ -51,11 +51,11 @@ class Assets {
 	}
 
 	public function register_admin_scripts() {
-		wp_register_script( 'SPSP-admin', SPSP_ADMIN_ASSETS . 'js/SPSP-admin' . $this->suffix . '.js', SPSP_VERSION, true );
+		wp_register_script( 'loop-events-admin', LOOP_EVENTS_ADMIN_ASSETS . 'js/loop-events-admin' . $this->suffix . '.js', LOOP_EVENTS_VERSION, true );
 	}
 
 	public function register_admin_styles() {
-		wp_register_style( 'SPSP-admin', SPSP_ADMIN_ASSETS . 'css/SPSP-admin' . $this->suffix . '.css', array(), SPSP_VERSION, 'all' );
+		wp_register_style( 'loop-events-admin', LOOP_EVENTS_ADMIN_ASSETS . 'css/loop-events-admin' . $this->suffix . '.css', array(), LOOP_EVENTS_VERSION, 'all' );
 	}
 
 	public function localize() {
@@ -63,6 +63,6 @@ class Assets {
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		);
 
-		wp_localize_script( 'SPSP-front', 'SPSP', $i10n );
+		wp_localize_script( 'loop-events-front', 'LoopEvents', $i10n );
 	}
 }

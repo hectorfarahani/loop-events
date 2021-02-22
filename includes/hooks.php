@@ -1,3 +1,3 @@
 <?php
 
-namespace SPSP\Includes;
+namespace Loop_Events\Includes;

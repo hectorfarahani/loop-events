@@ -1,6 +1,6 @@
-var version = '0.0.0';
+var version = '1.0.0';
 var versioningFiles = [
-  'SPSP.php',
+  'loop-events.php',
   'constants.php',
   'readme.txt'
 ];
@@ -48,15 +48,15 @@ gulp.task(
       .pipe(
         wpPot(
           {
-            domain: 'SPSP',
-            destFile: 'SPSP.pot',
-            package: 'WP_Reactions',
-            lastTranslator: 'Hector Farhan <hi@farahani.dev>',
-            team: 'Hector Farhan <hi@farahani.dev>'
+            domain: 'loop-events',
+            destFile: 'loop-events.pot',
+            package: 'Loop_Events',
+            lastTranslator: 'Hossein Farahani <h.farahani@outlook.com>',
+            team: 'Loop Test <logging@agentur-loop.com>'
           }
         )
       )
-      .pipe(gulp.dest('languages/SPSP.pot'))
+      .pipe(gulp.dest('languages/loop-events.pot'))
   }
 );
 
@@ -213,7 +213,7 @@ gulp.task('watch', function (cb) {
 // Copy task
 gulp.task('copy', function () {
   return gulp.src(srcs)
-    .pipe(gulp.dest('/home/hector/svn-releases/SPSP/trunk'))
+    .pipe(gulp.dest('/home/hector/svn-releases/loop-events/trunk'))
 })
 
 gulp.task('default', gulp.series('clean', 'version', 'generatePot', 'css', 'js'));

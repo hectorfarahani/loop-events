@@ -1,6 +1,6 @@
 <?php
 
-namespace SPSP\Includes;
+namespace Loop_Events\Includes;
 
 class Init {
 
@@ -20,8 +20,6 @@ class Init {
 
 	// Create database and things.
 	public static function activate() {
-		$db = DB::instance();
-		$db->create();
 	}
 
 	public static function deactivate() {

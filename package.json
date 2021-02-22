@@ -1,6 +1,6 @@
 {
-  "name": "SPSP",
-	"main": "gulpfile.js",
+  "name": "loop-events",
+  "main": "gulpfile.js",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",

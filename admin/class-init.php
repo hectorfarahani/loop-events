@@ -1,8 +1,8 @@
 <?php
 
-namespace SPSP\Admin;
+namespace Loop_Events\Admin;
 
-use SPSP\Includes\Functions;
+use Loop_Events\Includes\Functions;
 
 class Init {
 
@@ -26,83 +26,42 @@ class Init {
 	}
 
 	public function assets( $hook ) {
-		if ( 'toplevel_page_super-reactions' === $hook ) {
-			wp_enqueue_style( 'SPSP-admin' );
-			wp_enqueue_script( 'SPSP-admin' );
+		if ( 'toplevel_page_loop-events' === $hook ) {
+			wp_enqueue_style( 'loop-events-admin' );
+			wp_enqueue_script( 'loop-events-admin' );
 		}
 	}
 
 	public function add_menu_page() {
 		add_menu_page(
-			__( 'Super Reactions', 'super-reactions' ),
-			__( 'Reactions', 'super-reactions' ),
+			__( 'Loop Events', 'loop-events' ),
+			__( 'Loop Events', 'loop-events' ),
 			'manage_options',
-			'super-reactions',
+			'loop-events',
 			array( $this, 'renbder_settings_page' ),
-			'dashicons-smiley',
-			28
+			'dashicons-calendar',
+			23 // Between Pages and Comments.
 		);
 	}
 
 	public function renbder_settings_page() {
 		?>
-		<div class="SPSP-admin-wrapper">
-			<div class="SPSP-admin-header">
-				<div class="SPSP-logo">
-					<?php SPSP_logo( 100, 100 ); ?>
-				</div>
-				<div class="SPSP-admin-title">
-					<h1><?php esc_html_e( 'Super Reactions', 'super-reactions' ); ?></h1>
+		<div class="loop-events-admin-wrapper">
+			<div class="loop-events-admin-header">
+				<div class="loop-events-admin-title">
+					<h1><?php esc_html_e( 'Loop Events', 'loop-events' ); ?></h1>
 				</div>
 			</div>
-			<div class="SPSP-admin-main">
-				<section class="SPSP-settings">
-					<h2><?php esc_html_e( 'Templates:', 'super-reactions' ); ?></h2>
-				<?php $this->template_selector(); ?>
-				<?php wp_nonce_field('SPSP_save_settings'); ?>
+			<div class="loop-events-admin-main">
+				<section class="loop-events-settings">
+					<h2><?php esc_html_e( 'Import:', 'loop-events' ); ?></h2>
+
+				<?php wp_nonce_field('loop_events_save_settings'); ?>
 				</section>
 			</div>
 		</div>
 		<?php
 	}
 
-	public function template_selector() {
-		?>
-		<div class="SPSP-settings-wrapper">
-		<?php
-		$args = array(
-			'public' => true,
-		);
-
-		$post_types = get_post_types( $args );
-
-		// remove attachment from the list
-		unset( $post_types['attachment'] );
-
-		foreach ( $post_types as $post_type ) {
-			$this->render_setting_row( $post_type );
-		}
-
-		?>
-		</div>
-		<?php
-	}
-
-	private function render_setting_row( $post_type ) {
-		$reactions = SPSP_reactions();
-		?>
-			<div class="SPSP-template-selector">
-				<label for="SPSP-template-selector-<?php echo esc_attr( $post_type ); ?>"><?php echo ucfirst( $post_type ) . ':'; ?></label>
-				<select name="<?php echo esc_attr( $post_type ); ?>" id="SPSP-template-selector-<?php echo esc_attr( $post_type ); ?>">
-					<option value="0"><?php esc_html_e( 'Disable', 'super-reactions' ); ?></option>
-					<?php foreach ( $reactions as $slug => $reaction ) : ?>
-						<?php $selected = SPSP_get_active_template_slug( $post_type ) === $slug ? 'selected' : ''; ?>
-						<option value="<?php echo esc_attr( $slug ); ?>" <?php echo esc_attr( $selected ); ?> ><?php echo esc_html( $reaction['name'] ); ?></option>
-					<?php endforeach; ?>
-				</select>
-			</div>
-
-		<?php
-	}
 
 }
