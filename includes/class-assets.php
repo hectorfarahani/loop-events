@@ -1,6 +1,6 @@
 <?php
 
-namespace Loop_Events\Includes;
+namespace Loop_Events;
 class Assets {
 
 	public static $instance = null;

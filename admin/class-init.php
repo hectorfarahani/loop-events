@@ -2,7 +2,7 @@
 
 namespace Loop_Events\Admin;
 
-use Loop_Events\Includes\Functions;
+use Loop_Events\Functions;
 
 class Init {
 

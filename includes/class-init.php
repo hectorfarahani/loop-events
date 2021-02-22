@@ -1,6 +1,6 @@
 <?php
 
-namespace Loop_Events\Includes;
+namespace Loop_Events;
 
 class Init {
 
@@ -20,6 +20,7 @@ class Init {
 
 	// Create database and things.
 	public static function activate() {
+
 	}
 
 	public static function deactivate() {

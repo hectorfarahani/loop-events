@@ -13,7 +13,7 @@ namespace Loop_Events;
 
 use Loop_Events\Front\Init as Front;
 use Loop_Events\Admin\Init as Admin;
-use Loop_Events\Includes\Assets;
+use Loop_Events\Assets;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -25,15 +25,14 @@ require_once 'vendor/autoload.php';
 register_activation_hook( __FILE__, '\Loop_Events\loop_events_activation_hook_callback' );
 
 function loop_events_activation_hook_callback() {
-	\Loop_Events\Includes\Init::activate();
+	\Loop_Events\Init::activate();
 }
 
 register_deactivation_hook( __FILE__, '\Loop_Events\loop_events_deactivation_hook_callback' );
 
 function loop_events_deactivation_hook_callback() {
-	\Loop_Events\Includes\Init::deactivate();
+	\Loop_Events\Init::deactivate();
 }
-
 
 Admin::instance();
 Assets::instance();

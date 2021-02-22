@@ -1,3 +1,3 @@
 <?php
 
-namespace Loop_Events\Includes;
+namespace Loop_Events;
