@@ -6,7 +6,7 @@ define( 'LOOP_EVENTS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'LOOP_EVENTS_URL', plugin_dir_url( __FILE__ ) );
 
 define( 'LOOP_EVENTS_VERSION', '1.0.0' );
-define( 'LOOP_EVENTS_SLUG', 'loop-events' );
+define( 'LOOP_EVENTS_CPT_SLUG', 'loop-event' ); // Used  as slug for post types and taxonomies.
 
 define( 'LOOP_EVENTS_ADMIN_PATH', LOOP_EVENTS_PATH . 'admin/' );
 define( 'LOOP_EVENTS_ADMIN_URL', LOOP_EVENTS_URL . 'admin/' );

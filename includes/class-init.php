@@ -7,7 +7,7 @@ class Init {
 	public static $instance = null;
 
 	private function __construct() {
-
+		new \Loop_Events\Post_Type();
 	}
 
 	public static function instance() {
@@ -20,7 +20,7 @@ class Init {
 
 	// Create database and things.
 	public static function activate() {
-
+		flush_rewrite_rules();
 	}
 
 	public static function deactivate() {

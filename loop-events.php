@@ -13,6 +13,7 @@ namespace Loop_Events;
 
 use Loop_Events\Front\Init as Front;
 use Loop_Events\Admin\Init as Admin;
+use Loop_Events\Init as Loader;
 use Loop_Events\Assets;
 
 // If this file is called directly, abort.
@@ -34,6 +35,7 @@ function loop_events_deactivation_hook_callback() {
 	\Loop_Events\Init::deactivate();
 }
 
+Loader::instance();
 Admin::instance();
 Assets::instance();
 Front::instance();
