@@ -22,7 +22,7 @@ class Init {
 
 	public function init() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
-		add_action( 'admin_menu', array( $this, 'add_menu_page' ) );
+		add_action( 'admin_menu', array( $this, 'add_submenu_page' ) );
 	}
 
 	public function assets( $hook ) {
@@ -32,15 +32,14 @@ class Init {
 		}
 	}
 
-	public function add_menu_page() {
-		add_menu_page(
-			__( 'Loop Events', 'loop-events' ),
-			__( 'Loop Events', 'loop-events' ),
+	public function add_submenu_page() {
+		add_submenu_page(
+			'options-general.php',
+			__( 'Loop Events Settings', 'loop-events' ),
+			__( 'Loop Events Settings', 'loop-events' ),
 			'manage_options',
-			'loop-events',
+			'loop-events-settings',
 			array( $this, 'renbder_settings_page' ),
-			'dashicons-calendar',
-			23 // Between Pages and Comments.
 		);
 	}
 
