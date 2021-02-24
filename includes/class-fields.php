@@ -22,7 +22,7 @@ class Fields {
 			array(
 				'key'               => 'loop_events_field_organizer_name',
 				'label'             => __( 'Organizer Name', 'loop-events' ),
-				'name'              => 'organizer_name',
+				'name'              => 'loop_events_organizer_name',
 				'type'              => 'text',
 				'instructions'      => '',
 				'required'          => 0,
@@ -41,7 +41,7 @@ class Fields {
 			array(
 				'key'               => 'loop_events_field_organizer_email',
 				'label'             => __( 'Organizer Email', 'loop-events' ),
-				'name'              => 'organizer_email',
+				'name'              => 'loop_events_organizer_email',
 				'type'              => 'email',
 				'instructions'      => '',
 				'required'          => 0,
@@ -59,7 +59,7 @@ class Fields {
 			array(
 				'key'               => 'loop_events_field_date_and_time',
 				'label'             => __( 'Date and Time', 'loop-events' ),
-				'name'              => 'date_and_time',
+				'name'              => 'loop_events_date_and_time',
 				'type'              => 'date_time_picker',
 				'instructions'      => '',
 				'required'          => 0,
@@ -76,7 +76,7 @@ class Fields {
 			array(
 				'key'               => 'loop_events_field_address',
 				'label'             => __( 'Address', 'loop-events' ),
-				'name'              => 'address',
+				'name'              => 'loop_events_address',
 				'type'              => 'textarea',
 				'instructions'      => '',
 				'required'          => 0,
@@ -95,7 +95,7 @@ class Fields {
 			array(
 				'key'               => 'loop_events_map_location',
 				'label'             => __( 'Map Location', 'loop-events' ),
-				'name'              => 'map_location',
+				'name'              => 'loop_events_map_location',
 				'type'              => 'google_map',
 				'instructions'      => '',
 				'required'          => 0,

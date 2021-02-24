@@ -4,6 +4,7 @@
 		the_post();
 		$post_classes   = get_post_class();
 		$post_classes[] = 'entry-content';
+		global $post;
 
 		?>
 		<div <?php post_class( 'entry-content' ); ?> >
@@ -21,7 +22,7 @@
 					<h4><?php esc_html_e( 'Event details', 'loop-events' ); ?></h4>
 				</p>
 				<p>
-					<?php loop_events_show_text_field( __( 'Organizer Name', 'loop-events' ), 'organizer_name' ); ?>
+					<?php loop_events_show_text_field( __( 'Organizer Name', 'loop-events' ), 'loop_events_organizer_name' ); ?>
 				</p>
 				<p>
 					<?php loop_events_show_time(); ?>
@@ -30,7 +31,7 @@
 					<?php loop_events_show_organizer_email(); ?>
 				</p>
 				<p>
-					<?php loop_events_show_text_field( __( 'Address', 'loop-events' ), 'address' ); ?>
+					<?php loop_events_show_text_field( __( 'Address', 'loop-events' ), 'loop_events_address' ); ?>
 				</p>
 				<p>
 					<?php loop_events_show_map_link(); ?>

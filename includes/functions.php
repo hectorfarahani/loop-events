@@ -25,7 +25,7 @@ function loop_events_get_field( $field, $default = '' ) {
 }
 
 function loop_events_show_map_link() {
-	$map_data = loop_events_get_field( 'map_location' );
+	$map_data = loop_events_get_field( 'loop_events_map_location' );
 	if ( $map_data ) {
 		$latitude  = $map_data['center_lat'];
 		$longitude = $map_data['center_lng'];
@@ -40,7 +40,7 @@ function loop_events_show_map_link() {
 }
 
 function loop_events_show_organizer_email() {
-	$email = loop_events_get_field( 'organizer_email' );
+	$email = loop_events_get_field( 'loop_events_organizer_email' );
 	if ( $email ) :
 		?>
 		<strong><?php esc_html_e( 'Organizer Email: ', 'loop-events' ); ?></strong>
@@ -59,11 +59,19 @@ function loop_events_show_text_field( $label, $field_key ) {
 }
 
 function loop_events_show_time() {
-	$date_time = loop_events_get_field( 'date_and_time' );
+	$date_time = loop_events_get_field( 'loop_events_date_and_time' );
 	if ( $date_time ) {
-		?>
-		<strong><?php esc_html_e( 'Starts in: ', 'loop-events' ); ?></strong>
-		<?php echo human_time_diff( time(), strtotime( $date_time ) ); ?>
-		<?php
+		$date_time = strtotime( $date_time );
+		if ( time() > $date_time ) {
+			?>
+			<strong><?php esc_html_e( 'Starts in: ', 'loop-events' ); ?></strong>
+			<?php
+			echo human_time_diff( $date_time, time() );
+		} else {
+			?>
+			<strong><?php esc_html_e( 'Finished in: ', 'loop-events' ); ?></strong>
+			<?php
+			echo human_time_diff( time(), $date_time ) . ' Ago';
+		}
 	}
 }
