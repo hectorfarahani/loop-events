@@ -51,10 +51,10 @@ class Importer {
 
 	private function import_post( $post_args, $post_fields ) {
 		$post_id = wp_insert_post( $post_args, true );
-		$this->insert_post_fields( $post_id, $post_fields );
+		$this->import_post_fields( $post_id, $post_fields );
 	}
 
-	private function insert_post_fields( $post_id, $post_fields ) {
+	private function import_post_fields( $post_id, $post_fields ) {
 		foreach ( $post_fields as $key => $value ) {
 			update_field( $key, $value, $post_id );
 		}
