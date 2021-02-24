@@ -5,6 +5,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
   $importBtn.addEventListener('click', function (e) {
     const jsonData = document.getElementById('loop-events-json').files[0];
+
+    if (undefined === jsonData) {
+      return;
+    }
+
     const formData = new FormData();
 
     const spinner = showLoader();
