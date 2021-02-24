@@ -11,9 +11,13 @@ function loop_events_update_option( $option, $new_value ) {
 	return update_option( 'loop_events_config', $config );
 }
 
+function loop_events_is_acf_active() {
+	return function_exists( 'get_field' );
+}
+
 // Wrap ACF Related functions to avoid multiple checks for ACF existence and possible fatal errors in front-end.
 function loop_events_get_field( $field, $default ) {
-	if ( ! function_exists( 'get_field' ) ) {
+	if ( ! loop_events_is_acf_active() ) {
 		return $default;
 	}
 
