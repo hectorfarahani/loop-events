@@ -25,11 +25,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
     })
       .then((response) => response.json())
       .then((res) => {
-        const existingResults = document.querySelector('.loop-event-badge');
+        const existingResults = document.querySelector('.loop-events-badge');
         if ( existingResults ) {
           existingResults.parentElement.removeChild(existingResults)
         }
-        console.log(res);
         // Remove loading icon.
         e.target.parentNode.removeChild(spinner);
         // Re-enable button.
@@ -51,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   // Shows result as a badge and message.
   function showResults(status, text) {
     const badge = document.createElement('div');
-    badge.className = status ? 'loop-event-badge loop-event-badge-success' : 'loop-event-badge loop-event-badge-error';
+    badge.className = status ? 'loop-events-badge loop-events-badge-success' : 'loop-events-badge loop-events-badge-error';
     badge.textContent = text;
     return badge;
   }
