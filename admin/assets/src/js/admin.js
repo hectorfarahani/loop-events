@@ -25,17 +25,18 @@ document.addEventListener('DOMContentLoaded', function (event) {
     })
       .then((response) => response.json())
       .then((res) => {
+        const existingResults = document.querySelector('.loop-event-badge');
+        if ( existingResults ) {
+          existingResults.parentElement.removeChild(existingResults)
+        }
+        console.log(res);
         // Remove loading icon.
         e.target.parentNode.removeChild(spinner);
         // Re-enable button.
         e.target.removeAttribute('disabled');
         // Show results.
-        const badge = showResults(res.success, res.data.results);
+        const badge = showResults(res.success, res.data.message);
         e.target.insertAdjacentElement('afterend', badge);
-        // Hide shown result badge.
-        setTimeout(function () {
-          e.target.parentNode.removeChild(badge);
-        }, 500);
       });
   });
 
@@ -50,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   // Shows result as a badge and message.
   function showResults(status, text) {
     const badge = document.createElement('div');
-    badge.className = status ? 'loop-event-badge-success' : 'loop-event-badge-error';
+    badge.className = status ? 'loop-event-badge loop-event-badge-success' : 'loop-event-badge loop-event-badge-error';
     badge.textContent = text;
     return badge;
   }
