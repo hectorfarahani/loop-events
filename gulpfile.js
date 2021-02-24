@@ -93,7 +93,7 @@ gulp.task(
     )
       .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
       .pipe(save('before-dest'))
-      .pipe(rename({ basename: 'loo-events-admin', dirname: '' }))
+      .pipe(rename({ basename: 'loop-events-admin', dirname: '' }))
       .pipe(gulp.dest('admin/assets/dist/css'))
       .pipe(cleanCSS())
       .pipe(rename({ basename: 'loop-events-admin', suffix: '.min', dirname: '' }))
