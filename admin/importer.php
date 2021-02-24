@@ -8,7 +8,7 @@ class Importer {
 	public function __construct( $raw_data ) {
 		$this->set_default_stats();
 
-		$strat_time = microtime(true);
+		$strat_time = microtime( true );
 
 		foreach ( $raw_data as $event_data ) {
 			$data        = $this->parse_data( $event_data );
@@ -26,7 +26,7 @@ class Importer {
 	public function get_results() {
 
 		$message = sprintf(
-			__( '%d events created. %d events updated. Time spent: %ds.', 'loop-events' ),
+			__( '%1$d events created. %2$d events updated. Time spent: %3$ds.', 'loop-events' ),
 			$this->stats['created'],
 			$this->stats['updated'],
 			$this->stats['time'],
@@ -93,7 +93,7 @@ class Importer {
 
 		if ( get_post( $data['id'] ) ) {
 			$post_data['ID'] = $data['id'];
-			$this->set_stats( 'updated', ++$this->stats['update'] );
+			$this->set_stats( 'updated', ++$this->stats['updated'] );
 		} else {
 			$post_data['import_id'] = $data['id'];
 			$this->set_stats( 'created', ++$this->stats['created'] );

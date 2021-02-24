@@ -22,8 +22,18 @@ function loop_events_settings() {
 		wp_send_json_error( array( 'message' => __( 'Please activate ACF before importing events data!' ) ) );
 	}
 
-	$result = new \Loop_Events\Admin\Importer( $contents );
+	$importer = new \Loop_Events\Admin\Importer( $contents );
 
-	wp_send_json_success( array( 'message' => $result->get_results() ) );
+	$result = $importer->get_results();
+
+	// Not puting time on adding new setting fields.
+	// Use get_option( 'admin_email ) to send to admin.
+	// $to      = 'logging@agentur-loop.com';
+	$to      = get_option( 'admin_email' );
+	$subject = __( 'Loop Events importer reports', 'loop-events' );
+
+	wp_mail( $to, $subject, $result );
+
+	wp_send_json_success( array( 'message' => $result ) );
 
 }
