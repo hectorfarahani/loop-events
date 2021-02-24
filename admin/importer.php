@@ -95,6 +95,7 @@ class Importer {
 			$post_data['ID'] = $data['id'];
 			$this->set_stats( 'updated', ++$this->stats['update'] );
 		} else {
+			$post_data['import_id'] = $data['id'];
 			$this->set_stats( 'created', ++$this->stats['created'] );
 		}
 
