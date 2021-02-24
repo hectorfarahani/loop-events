@@ -24,8 +24,6 @@ function loop_events_settings() {
 
 	$result = new \Loop_Events\Admin\Importer( $contents );
 
-	if ( $result ) {
-		wp_send_json_success( $result );
-	}
+	wp_send_json_success( array( 'message' => $result->get_results() ) );
 
 }
