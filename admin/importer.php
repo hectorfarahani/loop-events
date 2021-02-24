@@ -3,11 +3,13 @@
 namespace Loop_Events\Admin;
 
 class Importer {
-	private $count = 0;
+	private $stats = array();
 
 	public function __construct( $raw_data ) {
+		$this->set_default_stats();
 
-		$this->count = count( $raw_data );
+		$strat_time = microtime(true);
+
 		foreach ( $raw_data as $event_data ) {
 			$data        = $this->parse_data( $event_data );
 			$post_args   = $this->prepare_post_data( $data );
@@ -15,11 +17,36 @@ class Importer {
 			$this->import_post( $post_args, $post_fields );
 		}
 
-		return true;
+		$time_spent = microtime( true ) - $strat_time;
+		$this->set_stats( 'time', $time_spent );
+		$this->set_stats( 'total', count( $raw_data ) );
+
 	}
 
-	public function get_count() {
-		return $this->count;
+	public function get_results() {
+
+		$message = sprintf(
+			__( '%d events created. %d events updated. Time spent: %ds.', 'loop-events' ),
+			$this->stats['created'],
+			$this->stats['updated'],
+			$this->stats['time'],
+		);
+
+		return $message;
+	}
+
+	private function set_default_stats() {
+		// Default stats.
+		$this->stats = array(
+			'total'   => 0,
+			'created' => 0,
+			'updated' => 0,
+			'time'    => 0,
+		);
+	}
+
+	private function set_stats( $prop, $value ) {
+		$this->stats[ $prop ] = $value;
 	}
 
 	private function import_post( $post_args, $post_fields ) {
@@ -66,6 +93,9 @@ class Importer {
 
 		if ( get_post( $data['id'] ) ) {
 			$post_data['ID'] = $data['id'];
+			$this->set_stats( 'updated', ++$this->stats['update'] );
+		} else {
+			$this->set_stats( 'created', ++$this->stats['created'] );
 		}
 
 		return $post_data;
@@ -83,6 +113,5 @@ class Importer {
 			),
 		);
 	}
-
 
 }
