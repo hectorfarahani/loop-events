@@ -16,12 +16,12 @@ function loop_events_is_acf_active() {
 }
 
 // Wrap ACF Related functions to avoid multiple checks for ACF existence and possible fatal errors in front-end.
-function loop_events_get_field( $field, $default = '' ) {
+function loop_events_get_field( $field, $default = '', $post_id ) {
 	if ( ! loop_events_is_acf_active() ) {
 		return $default;
 	}
 
-	return get_field( $field );
+	return get_field( $field, $post_id );
 }
 
 function loop_events_show_map_link() {
