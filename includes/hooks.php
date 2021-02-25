@@ -36,22 +36,25 @@ function loop_events_reorder_archive( $query ) {
 		$query->set( 'meta_key', 'loop_events_date_and_time' );
 		$query->set( 'meta_type', 'numeric' );
 		$query->set( 'order', 'DESC' );
-		$query->set( 'meta_query', array(
-			'key' => 'loop_events_date_and_time',
-			'value' => time(),
-			'compare' => '<=',
-		) );
+		$query->set(
+			'meta_query',
+			array(
+				'key'     => 'loop_events_date_and_time',
+				'value'   => time(),
+				'compare' => '<=',
+			)
+		);
 	}
 
 	return $query;
 
 }
 
-add_filter( 'acf/update_value/name=loop_events_date_and_time', 'loop_events_acf_save_as_timestamp');
+add_filter( 'acf/update_value/name=loop_events_date_and_time', 'loop_events_acf_save_as_timestamp' );
 add_filter( 'acf/load_value/name=loop_events_date_and_time', 'loop_events_acf_save_as_timestamp' );
 
 function loop_events_acf_save_as_timestamp( $value ) {
-	if ( $value &&  $value != (int) $value ) {
+	if ( $value && $value != (int) $value ) {
 		return strtotime( $value );
 	}
 
