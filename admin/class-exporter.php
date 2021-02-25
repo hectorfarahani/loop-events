@@ -11,9 +11,10 @@ class Exporter {
 			array(
 				'post_type'      => LOOP_EVENTS_CPT_SLUG,
 				'orderby'        => 'meta_value_num',
-				'order'          => 'DESC',
+				'meta_key'       => 'loop_events_date_and_time',
+				'order'          => 'ASC',
 				'posts_per_page' => -1,
-				'status'         => 'any',
+				'post_status'    => 'any',
 			)
 		);
 
