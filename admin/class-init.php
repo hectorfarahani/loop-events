@@ -23,6 +23,7 @@ class Init {
 	public function init() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 		add_action( 'admin_menu', array( $this, 'add_submenu_page' ) );
+		new Exporter();
 	}
 
 	public function assets( $hook ) {
