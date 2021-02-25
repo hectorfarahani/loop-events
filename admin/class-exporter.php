@@ -29,17 +29,30 @@ class Exporter {
 			'id'        => $post_data->ID,
 			'title'     => $post_data->post_title,
 			'about'     => $post_data->post_content,
-			'organizer' => loop_events_get_field( 'loop_events_organizer_name' ),
-			'timestamp' => loop_events_get_field( 'loop_events_date_and_time' ),
-			'isActive'  => $post_data->post_status,
-			'email'     => loop_events_get_field( 'loop_events_organizer_email' ),
-			'address'   => loop_events_get_field( 'loop_events_address' ),
-			'latitude'  => loop_events_get_field( 'loop_events_map_location' ),
-			'longitude' => loop_events_get_field( 'loop_events_map_location' ),
-			'tags'      => array(),
+			'organizer' => loop_events_get_field( 'loop_events_organizer_name', null, $post_data->ID ),
+			'timestamp' => loop_events_get_field( 'loop_events_date_and_time', null, $post_data->ID ),
+			'isActive'  => in_array( $post_data->post_status, array( 'publish' ), true ),
+			'email'     => loop_events_get_field( 'loop_events_organizer_email', null, $post_data->ID ),
+			'address'   => loop_events_get_field( 'loop_events_address', null, $post_data->ID ),
+			'latitude'  => self::parse_map_data( 'center_lat', $post_data->ID ),
+			'longitude' => self::parse_map_data( 'center_lng', $post_data->ID ),
+			'tags'      => self::parse_tags( $post_data->ID ),
 		);
 
 		return $parsed_data;
+	}
+
+	private static function parse_map_data( $prop, $post_id ) {
+		$map_data = loop_events_get_field( 'loop_events_map_location', null, $post_id );
+		return $map_data[ $prop ];
+	}
+
+	private static function parse_tags( $post_id ) {
+		$tags = get_the_terms( $post_id, LOOP_EVENTS_CPT_SLUG . '-tags' );
+		if ( is_array( $tags ) ) {
+			return array_column( $tags, 'name' );
+		}
+		return array();
 	}
 
 }
