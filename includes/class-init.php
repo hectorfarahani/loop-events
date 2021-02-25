@@ -21,6 +21,7 @@ class Init {
 
 	// Create database and things.
 	public static function activate() {
+		( new Post_Type() )->register_post_type();
 		flush_rewrite_rules();
 	}
 
