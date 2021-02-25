@@ -2,10 +2,12 @@
 
 ## 👔 Users
 1. Copy `loop-events` folder to `wp-content/plugins` or upload `loop-events.zip` from *Admin dashboard -> Plugins*
-2. Activate **Loop Events** plugin.
-3. **Import** sample data by running `wp loop-events import`.
-4. You can **import** custom json data from *Admin dashboard -> Settings -> Loop Events settings*
-5. In order to **export** data use *Export existing data* button from *Admin dashboard -> Settings -> Loop Events settings*
+2. Install and activate **Advanced Custom Fields** plugin.
+3. Activate **Loop Events** plugin.
+4. **Import** sample data by running `wp loop-events import`.
+5. You can **import** custom json data from *Admin dashboard -> Settings -> Loop Events settings*
+6. In order to **export** data use *Export existing data* button from *Admin dashboard -> Settings -> Loop Events settings* to download data as a json file.
+7. You can **export** data by checking `http://site.dom/wp-admin/options-general.php?page=loop-events-settings&export=1` to get events in a json format.
 
 
 
