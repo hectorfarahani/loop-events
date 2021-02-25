@@ -4,6 +4,17 @@ namespace Loop_Events\Admin;
 
 class Exporter {
 
+	public function __construct() {
+		add_action( 'init', array( $this, 'export_from_url' ) );
+	}
+
+	public function export_from_url() {
+		if ( isset( $_GET['export'] ) && 1 == $_GET['export'] ) {
+			echo self::download();
+			exit;
+		}
+	}
+
 	public static function download() {
 		$post_data = array();
 
