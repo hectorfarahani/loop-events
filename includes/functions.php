@@ -62,16 +62,9 @@ function loop_events_show_time() {
 	$date_time = loop_events_get_field( 'loop_events_date_and_time' );
 	if ( $date_time ) {
 		$date_time = strtotime( $date_time );
-		if ( time() > $date_time ) {
-			?>
-			<strong><?php esc_html_e( 'Starts in: ', 'loop-events' ); ?></strong>
-			<?php
-			echo human_time_diff( $date_time, time() );
-		} else {
-			?>
-			<strong><?php esc_html_e( 'Finished in: ', 'loop-events' ); ?></strong>
-			<?php
-			echo human_time_diff( time(), $date_time ) . ' Ago';
-		}
+		?>
+		<strong><?php esc_html_e( 'Starts in: ', 'loop-events' ); ?></strong>
+		<?php
+		echo human_time_diff( $date_time, time() );
 	}
 }

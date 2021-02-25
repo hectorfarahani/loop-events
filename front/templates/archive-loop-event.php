@@ -4,7 +4,6 @@
 		the_post();
 		$post_classes   = get_post_class();
 		$post_classes[] = 'entry-content';
-		global $post;
 
 		?>
 		<div <?php post_class( 'entry-content' ); ?> >

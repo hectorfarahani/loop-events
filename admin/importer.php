@@ -106,7 +106,7 @@ class Importer {
 		return array(
 			'loop_events_organizer_name'  => $data['organizer'],
 			'loop_events_organizer_email' => $data['email'],
-			'loop_events_date_and_time'   => $data['timestamp'],
+			'loop_events_date_and_time'   => strtotime( $data['timestamp'] ),
 			'loop_events_address'         => $data['address'],
 			'loop_events_map_location'    => array(
 				'center_lat' => $data['latitude'],
