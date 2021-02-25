@@ -14,7 +14,8 @@
       "admin/ajax.php",
       "includes/hooks.php",
       "includes/ajax.php",
-      "includes/functions.php"
+      "includes/functions.php",
+      "wp-cli/commands.php"
     ],
     "classmap": [
       "admin",

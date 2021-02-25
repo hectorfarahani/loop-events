@@ -22,8 +22,8 @@ function loop_events_settings() {
 		wp_send_json_error( array( 'message' => __( 'Please activate ACF before importing events data!' ) ) );
 	}
 
-	$importer = new \Loop_Events\Admin\Importer( $contents );
-
+	$importer = new \Loop_Events\Admin\Importer();
+	$importer->import( $contents );
 	$result = $importer->get_results();
 
 	// Not puting time on adding new setting fields.

@@ -5,7 +5,13 @@ namespace Loop_Events\Admin;
 class Importer {
 	private $stats = array();
 
-	public function __construct( $raw_data ) {
+	public function import_sample_data() {
+		$sample_data = file_get_contents( LOOP_EVENTS_PATH . '/sample-data/loop-events.json' );
+		$this->import( json_decode( $sample_data, true ) );
+		\WP_CLI::success( $this->get_results() );
+	}
+
+	public function import( $raw_data ) {
 		$this->set_default_stats();
 
 		$strat_time = microtime( true );
@@ -20,7 +26,6 @@ class Importer {
 		$time_spent = microtime( true ) - $strat_time;
 		$this->set_stats( 'time', $time_spent );
 		$this->set_stats( 'total', count( $raw_data ) );
-
 	}
 
 	public function get_results() {
