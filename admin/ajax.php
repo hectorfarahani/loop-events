@@ -37,3 +37,17 @@ function loop_events_settings() {
 	wp_send_json_success( array( 'message' => $result ) );
 
 }
+
+add_action( 'wp_ajax_loop_events_export', 'loop_events_export' );
+
+function loop_events_export() {
+	check_ajax_referer( 'loop_events_settings', 'nonce' );
+	
+	if ( ! loop_events_is_acf_active() ) {
+		wp_send_json_error( array( 'message' => __( 'Please activate ACF before importing events data!' ) ) );
+	}
+	
+	$exporter = new \Loop_Events\Admin\Exporter();
+	$events_data = $exporter->download();
+	wp_send_json( $events_data );
+}
