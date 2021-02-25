@@ -61,6 +61,10 @@ class Init {
 						<button type="button" id="loop-events-json-import" class="button button-primary"><?php esc_html_e( 'Import', 'loop-events' ); ?></button>
 				<?php wp_nonce_field( 'loop_events_settings' ); ?>
 				</section>
+				<section class="loop-events-settings">
+					<h2><?php esc_html_e( 'Export:', 'loop-events' ); ?></h2>
+					<button type="button" id="loop-events-json-export" class="button button-primary"><?php esc_html_e( 'Export existing data', 'loop-events' ); ?></button>
+				</section>
 			</div>
 		</div>
 		<?php
